@@ -1,0 +1,17 @@
+element return_element_of_difference (set SET_PLUS_ONE, set STARTER_SET)
+    {
+		set SET_OF_DIFFERENCE;
+		SET_OF_DIFFERENCE = SET_PLUS_ONE - STARTER_SET;
+		element ELEMENT_OF_DIFFERENCE = (element) SET_OF_DIFFERENCE;
+		return ELEMENT_OF_DIFFERENCE;
+    }
+
+main
+	{
+        set SET1 = {1, 2, 3};
+        set SET2 = SET1 - (set)3;
+
+		result_element = return_element_of_difference(SET1, SET2);
+        print(result_element);
+	}
+
