@@ -2,11 +2,12 @@ grammar Expr;
 
 program: func* 'main' '{' (any_statement)* '}' EOF;
 
+
 func: TYPE ID '(' (TYPE ID (',' TYPE ID)*)? ')'
 '{' (any_statement)* '}';
 
-assign_statement: TYPE ID (',' TYPE? ID)*;
-statement: TYPE? ID (',' TYPE? ID)* '=' (expr (',' expr)*);
+assign_statement: TYPE ID (',' ID)*;
+statement: TYPE? ID (',' ID)* '=' (expr (',' expr)*);
 
 expr: (ID
 | ('(' TYPE ')' ID)

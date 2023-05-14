@@ -3,6 +3,7 @@ from gen.ExprLexer import ExprLexer
 from gen.ExprParser import ExprParser
 from antlr4.CommonTokenStream import CommonTokenStream
 from listener import SetErrorListener
+from error_strategy import SetLangVisitor, SemanticError
 
 
 def start_parse(input_string):
@@ -15,6 +16,13 @@ def start_parse(input_string):
     parser.addErrorListener(syntax_error_listener)
 
     tree = parser.program()
+    if syntax_error_listener.has_errors:
+        print("The program has syntax errors!")
+        exit()
+    else:
+        print("The program has no syntax errors!")
+        visitor = SetLangVisitor()
+        visitor.visit(tree)
 
 
 with open('example1_syntax_error.txt', 'r') as file:
